@@ -1,0 +1,47 @@
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+ vector<int> factor(int n){
+     
+    vector<int> list;
+    int i;
+    
+    for(i=2 ; i*i <= n ; i++){
+        
+        while(n%i==0){
+            
+           list.push_back(i);
+            n = n/i;
+              
+        }
+    }
+    
+    if(n>1) list.push_back(n);
+    
+  //  sort(list.begin(),list.end());
+  //Because already sorted
+    
+    return list;
+}
+
+
+void printPrimeFactorization(int n){
+    // code here
+      vector<int> list;
+      
+      list = factor(n);
+      
+      for(int x : list){
+          
+          
+          
+          cout << x << " ";
+          
+          
+      }
+   
+    
+    
+    
+}
