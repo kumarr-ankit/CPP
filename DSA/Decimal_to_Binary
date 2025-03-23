@@ -1,0 +1,27 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int mul(int base,int pow){
+    int mul =1;
+    for(int i =0;i<pow;i++){
+        mul = mul*base;
+    }
+    return mul;
+}
+int main (){
+    int n;
+    cout << "Enter you no. : ";
+    cin>>n;
+    int sum,i = 0;
+    sum =0;
+    while(n>0){
+        int bit = n&1;
+        sum =  (bit*mul(10,i)) + sum;
+        n = n/2;
+        cout << "\nCalculating....\n";
+        i++;
+
+    }
+    cout << "\nBinary formate is : "<< sum << endl;
+}
