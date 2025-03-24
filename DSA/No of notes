@@ -1,0 +1,50 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+
+
+int main()
+{
+    int n;
+    cout << "Enter you amount. : ";
+    cin >> n;
+int deno;
+int n100,n50,n20,n10;
+n10=0;
+n20=0;
+n50=0;
+n100=0;
+if(n>=100){
+    deno=100;
+}else if(n>=50){
+    deno = 50;
+}else if(n>=20){
+    deno = 50;
+}else if(n>=10){
+    deno = 50;
+}else{
+
+    deno = 0;
+}
+
+switch (deno)
+{
+case 100 : n100 = n/100;
+n=n%100;
+case 50 : n50 = n/50;
+n=n%50;
+case 20 : n20 = n/20;
+n=n%20;
+case 10 : n10 = n/10;
+n=n%10;
+default:
+    break;
+}
+cout<<"No of 100 Notes : "<<n100<<endl;
+cout<<"No of 50 Notes : "<<n50<<endl;
+cout<<"No of 20 Notes : "<<n20<<endl;
+cout<<"No of 10 Notes : "<<n10<<endl;
+
+
+}
