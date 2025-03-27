@@ -1,0 +1,30 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int find(int a){
+
+int sum =0;
+cout << a << " is  " ;
+while(a !=0){
+
+    int bit  = a&1;
+    cout << bit << " ";
+    sum = sum + bit;
+     a = a >> 1;
+   
+
+}
+cout << endl;
+return sum;
+
+}
+
+int main()
+{
+  int a,b;
+  cin>>a>>b;
+  int c = find(a)+find(b);
+cout << "No of set bit in a and b is \n"<< c<<endl;
+
+}
