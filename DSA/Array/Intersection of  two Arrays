@@ -16,6 +16,10 @@ vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, i
   for(int i =0;i<n;i++){
   //inner loop
    for(int j=0;j<m;j++){
+
+
+//check if second array's element is not greater .If greater then break the inner loop
+if(arr2[j]>arr1[i]) break;
     if(arr1[i]==arr2[j]){
 
    //put the element in third array
