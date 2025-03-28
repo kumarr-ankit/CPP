@@ -9,27 +9,31 @@ vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, i
 	You have to just return the intersection array
   */
   vector <int> arr3;
+int i=0,j=0;
+
+while(i<n&&j<m){
+  if(arr1[i]<arr2[j]){
+
+    i++;
+
+  }else if(arr1[i]==arr2[j]){
+
+ arr3.push_back(arr2[j]);
+ i++;
+ j++;
 
 
+  }else{
 
-  //outer loop
-  for(int i =0;i<n;i++){
-  //inner loop
-   for(int j=0;j<m;j++){
+j++;
 
-
-//check if second array's element is not greater .If greater then break the inner loop
-if(arr2[j]>arr1[i]) break;
-    if(arr1[i]==arr2[j]){
-
-   //put the element in third array
-	  arr3.push_back(arr1[i]);
-	  //mark as used.
-      arr2[j] = INT_MIN;
-      break;
-	}
-   }
   }
+
+
+}
+
+
+
 
 	return arr3;
 }
