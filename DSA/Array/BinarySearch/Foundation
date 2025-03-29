@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(int arr[], int key, int size)
+{
+  int mid;
+  int index = -1;
+  int start = 0;
+  int end = size - 1;
+  int avg;
+  while (start <= end)
+  {
+ 
+    cout << "Working..." << endl;
+    mid = (start + end) / 2;
+    avg = (arr[start] + arr[end]) / 2;
+
+    if (avg == key)
+    {
+      return mid;
+    }
+
+    if (avg > key)
+    {
+
+      end = mid - 1;
+    }
+
+    if (avg < key)
+    {
+      start = mid + 1;
+    }
+
+    mid = (start + end) / 2;
+  }
+
+  return index;
+}
+
+int main()
+{
+
+
+  int arr[] = {1,2,3,4,5,6,7,8,9};
+  int key = 7;
+  int res = binarySearch(arr,key,9);
+
+  cout <<"The key element " << key << " Found at index " << res << endl;
+
+  return 0;
+}
