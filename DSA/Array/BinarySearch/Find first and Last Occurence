@@ -1,0 +1,84 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int firstOcc(int arr[], int n, int K)
+{
+  int ans = -1; // not found
+  int mid, start, end;
+  start = 0, end = n - 1;
+  mid = start + (end - start) / 2;
+  // loop on array
+  while (start < end)
+  {
+
+    cout << "Working.." << endl;
+
+    if (arr[mid] == K)
+    {
+      ans = mid;
+      end = mid - 1;
+    }
+    else if (K < arr[mid])
+    {
+
+      end = mid - 1;
+    }
+    else if (K > arr[mid])
+    {
+
+      start = mid + 1;
+    }
+    mid = (start + end) / 2;
+  }
+
+  return ans;
+}
+int lastOcc(int arr[], int n, int K)
+{
+  int ans = -1; // not found
+
+  int start = 0;
+  int end = n - 1;
+  int mid = (start + end) / 2;
+
+  while (start <= end)
+  {
+
+    if (K == arr[mid])
+    {
+      ans = mid;
+      start = mid + 1;
+    }
+    else if (K > arr[mid])
+    {
+      start = mid + 1;
+    }
+    else if (K < arr[mid])
+    {
+      end = mid - 1;
+    }
+
+    mid = (start + end) / 2;
+  }
+
+  return ans;
+}
+void FindOcc(int arr[], int n, int K)
+{
+  int a = firstOcc(arr, n, K);
+  int b = lastOcc(arr, n, K);
+
+  cout << "Key : " << K << " found  firstly at index " << a << endl;
+  cout << "Key : " << K << " found  lastly at index " << b << endl;
+}
+int main()
+{
+
+  int arr[] = {1 , 2, 3, 4, 5, 5, 6, 7, 7, 7, 7, 9};
+             //0   1  2  3  4  5  6  7  8  9  10 11
+  int key = 7;
+  FindOcc(arr, 12, key);
+
+  return 0;
+}
