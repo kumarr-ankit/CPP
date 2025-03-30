@@ -1,5 +1,7 @@
 class Solution {
 public:
+
+//Brute Force
     int pivotIndex(vector<int>& nums) {
         int index = -1;
         int i;
@@ -24,5 +26,42 @@ public:
         }
 
         return index;
+    }
+};
+
+
+//Optimized
+
+
+class Solution {
+public:
+    int sum(vector<int>& nums) {
+        int i = 0;
+        for (int x : nums) {
+
+            i += x;
+        }
+        return i;
+    }
+
+    int pivotIndex(vector<int>& nums) {
+
+        int i;
+        int total = sum(nums);
+        int left = 0;
+        int right;
+        for (i = 0; i < nums.size(); i++) {
+
+            // not to include pivot element
+            right = total - left - nums[i];
+
+            if (right == left) {
+                return i;
+            } else {
+                left = left + nums[i];
+            }
+        }
+
+        return -1;
     }
 };
