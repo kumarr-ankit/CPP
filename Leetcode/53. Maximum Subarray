@@ -1,4 +1,5 @@
 // M-1 : TLE 🤒
+// T.C. : O(n3)
 
 #include <climits>
 #include <vector>
@@ -41,6 +42,41 @@ public:
                 }
 
                 subArr = {};
+            }
+        }
+
+        return currentSum;
+    }
+};
+
+// M -2 : O(n2) ⭐
+// TLE 🤒
+
+#include <climits>
+#include <vector>
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+
+        int currentSum = INT_MIN;
+        int temp_sum = 0;
+        int i, j;
+        int n = nums.size();
+
+        // outerLoop
+
+        for (i = 0; i < n; i++) {
+
+            temp_sum = 0;
+
+            for (j = i; j < n; j++) {
+
+                temp_sum += nums[j];
+                if (temp_sum > currentSum) {
+
+                    currentSum = temp_sum;
+                }
             }
         }
 
