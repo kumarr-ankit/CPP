@@ -1,0 +1,49 @@
+// M-1 : TLE 🤒
+
+#include <climits>
+#include <vector>
+
+class Solution {
+public:
+    int sumKaro(vector<int>& nums) {
+        int sum = 0;
+
+        for (int x : nums) {
+
+            sum += x;
+        }
+        return sum;
+    }
+
+    int maxSubArray(vector<int>& nums) {
+
+        int currentSum = INT_MIN;
+        int temp_sum = 0,n= nums.size();
+        int i, j, k;
+
+        vector<int> subArr = {};
+
+        // outerLoop
+
+        for (i = 0; i < n; i++) {
+
+            for (j = i; j < n; j++) {
+
+                for (k = i; k <= j; k++) {
+
+                    subArr.push_back(nums[k]);
+                }
+
+                temp_sum = sumKaro(subArr);
+
+                if (temp_sum > currentSum) {
+                    currentSum = temp_sum;
+                }
+
+                subArr = {};
+            }
+        }
+
+        return currentSum;
+    }
+};
