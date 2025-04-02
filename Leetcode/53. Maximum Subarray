@@ -83,3 +83,37 @@ public:
         return currentSum;
     }
 };
+
+// M -3 : O(n)
+// TLE 🙅
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+int n = nums.size();
+int temp_sum = 0;
+int sum = INT_MIN;
+
+/*
+The main logic to solve this problem using Kdane Algorithm is that 
+add the sum if sum is only positive. 
+*/
+
+        for(int i = 0;i<n;i++){
+
+            temp_sum = temp_sum + nums[i] ;
+
+            if(temp_sum > sum){
+                 sum = temp_sum;  
+            }
+
+            if(temp_sum < 0 ) {
+                temp_sum = 0;
+            }
+
+        }
+        return sum;
+        
+    }
+};
+
