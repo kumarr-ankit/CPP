@@ -1,0 +1,33 @@
+//M 1 TLE 
+
+#include <climits>
+class Solution {
+public:
+    int fr(vector<int>& nums, int x) {
+        int c = 0;
+
+        for (int e : nums) {
+
+            if (e == x) {
+                c++;
+            }
+        }
+        return c;
+    }
+    int majorityElement(vector<int>& nums) {
+
+        int ans = INT_MIN;
+        int m = nums.size()/2;
+       
+        for (int i = 0; i < nums.size(); i++) {
+
+           if(fr(nums,nums[i])>m){
+            ans = max(nums[i],ans);
+           }
+
+
+        }
+
+        return ans;
+    }
+};
