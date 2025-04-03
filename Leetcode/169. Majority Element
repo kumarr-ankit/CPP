@@ -64,3 +64,33 @@ public:
         return ans;
     }
 };
+
+
+// M 2  ⭐
+// no TLE
+// TC : nlogn (sort) + o(n) (loop)
+
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int fr = 1;
+        int ans;
+        sort(nums.begin(),nums.end());
+        if(nums.size()==1) return nums[0]; // edge case
+        for(int i = 1;i<nums.size();i++){
+         if(nums[i]==nums[i-1]){
+         fr++;
+        }else {
+         fr = 0;
+        }
+
+        if(fr >= (nums.size()/2)){
+            ans = nums[i];
+        };
+
+        }
+        return ans;
+        
+    }
+};
