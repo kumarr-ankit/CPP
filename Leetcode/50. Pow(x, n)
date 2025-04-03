@@ -1,0 +1,29 @@
+// M1 : O(n)
+// TLE 🤒
+
+class Solution {
+public:
+    double myPow(double x, int n) {
+
+        if(n==0) return 1.0;
+        if(x==0) return 0.0;
+        if(x==(-1)){
+            if(n%2==0) return 1.0;
+            else if(n%2 !=0) return -1.0;
+        }
+       long double ans = 1;
+        int p = abs(n);
+        for(int i = 0;i<p;i++){
+            ans =  ans*x;
+        }
+
+        double t;
+        if(n>0){
+            t = ans;
+        }else {
+            t = 1/ans;
+        }
+        return t;
+        
+    }
+};
