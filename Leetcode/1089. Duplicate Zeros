@@ -21,3 +21,50 @@ public:
         arr.resize(n);
     }
 };
+
+
+
+// TC O(N)
+
+class Solution {
+public:
+    void duplicateZeros(vector<int>& arr) {
+        int n = arr.size();
+        int dups = 0 ;
+        int last = n-1;
+
+        //first loop.
+        // check no of zero . And to total duplicate to do . If zero is at last then no duplicate is possible so put zero
+
+        for(int i = 0 ; i <= (last - dups) ; i++){
+
+            if(arr[i]==0){
+                //check if it is on edge or not
+                if(i==(last-dups)){
+                    arr[last] = 0;
+                    last--;
+                    break;
+                }else {
+                    dups++;
+
+                }  
+            }
+        } 
+
+
+        //second loop
+
+        int j = last - dups;
+
+        for(j;j>=0;j--){
+           if(arr[j]==0){
+             arr[j+dups] = 0;
+            dups-- ;
+            arr[j+dups] = 0;
+           }else {
+            arr[j+dups] = arr[j];
+           }
+
+        }
+    }
+};
