@@ -1,0 +1,18 @@
+public:
+    int removeElement(vector<int>& nums, int val) {
+
+        int size = nums.size();
+        int i =0 ;
+
+        //loop
+        while(i<size){
+            if(nums[i]==val){
+                nums[i] = nums[size-1];
+                size--;
+            }else {
+                i++;
+            }
+        }
+       return size; 
+    }
+};
