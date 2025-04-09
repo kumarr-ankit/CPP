@@ -24,3 +24,33 @@ void sort0and1(int n, vector<int> &A){
         }
     }
 }
+
+//TWO POINTER APPROACH 
+
+#include <bits/stdc++.h> 
+
+
+void sort0and1(int n, vector<int> &A){
+    // Write your code here.
+
+    int left = 0; 
+    int right = A.size()-1;
+    while(left < right){
+        if(A[left]==1 && A[right]==0){
+           
+            swap(A[left],A[right]);
+            left++;
+            right--;
+        }
+
+        if(A[left]==0){
+
+            left++;
+
+        }
+
+        if(A[right]==1){
+            right--;
+        }
+    }
+}
