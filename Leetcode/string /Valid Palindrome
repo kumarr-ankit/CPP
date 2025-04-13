@@ -1,0 +1,53 @@
+class Solution {
+public:
+    string toLower(string s){
+        for(int i = 0 ; i < s.size() ; i++){
+            if(s[i] >= 'A' &&  s[i] <= 'Z'){
+                s[i] = s[i] - 'A' + 'a';
+            }
+        }
+        return s;
+    }
+
+    string clean(string s){
+        int j = 0;
+        
+        for(int i = 0 ; i < s.size() ; i++ ){
+
+            if(s[i] >= 'a' && s[i] <= 'z'){
+                s[j] = s[i];
+                j++;
+            }else if(s[i] >='0' && s[i] <= '9'){  // Most imp line ✅
+                s[j] = s[i];
+                j++;
+            }
+        }
+        // s[j] = '\0'; do not do this with string
+
+        // resize the string
+
+        s.resize(j);
+
+        return s;
+    }
+    bool isPalindrome(string s) {
+        s = toLower(s);
+        s = clean(s);
+        if(s=="") return true;
+
+        int j = 0 , k = s.size() -1;
+        while(j<k){
+
+            if(s[j] != s[k] ){
+                return false;
+            }else {
+                 j++;
+                 k--;
+            }
+
+        }
+        return true;
+
+        
+    }
+};
