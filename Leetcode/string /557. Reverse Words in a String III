@@ -1,0 +1,36 @@
+#include <algorithm>
+class Solution {
+public:
+
+
+
+string revString(string arr){
+
+    int first = 0;
+    for(int i = 0 ; i < arr.size() ;i++){
+
+        if(arr[i] == ' '){
+
+            reverse(arr.begin()+first,arr.begin()+i);
+            first = i+1;
+
+           
+
+        }
+
+    }
+
+    // reverse the last word ,  because ye bach gya tha loop me last gap ke pahle tak hi reverse hua hai baki ka word bacha hai 😃
+
+    reverse(arr.begin()  + first , arr.end());
+
+    return arr;
+
+    
+}
+    string reverseWords(string s) {
+       s = revString(s);
+
+        return s;
+    }
+};
