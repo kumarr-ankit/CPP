@@ -19,3 +19,28 @@ string replaceSpaces(string &str){
 	}
 	  return str;
 }
+
+
+// Methode : Optimized ✨
+
+#include <bits/stdc++.h> 
+string replaceSpaces(string &str){
+	// Write your code here.
+
+	string s = "";
+	
+
+	for(int i = 0 ; i < str.size() ; i++){
+
+		if(str[i] == ' '){
+
+			s += "@40";
+		
+		}else {
+			s += str[i];
+		}
+
+ 
+	}
+	  return s;
+}
