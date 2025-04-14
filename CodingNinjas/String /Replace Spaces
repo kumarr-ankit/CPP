@@ -1,0 +1,21 @@
+// Method 1 : 0.81%
+
+#include <bits/stdc++.h> 
+string replaceSpaces(string &str){
+	// Write your code here.
+	
+//use backward loop because string is shifting in every iteration so some char may skip if we use forward loop 
+	for(int i = str.size() - 1 ; i >= 0 ; i--){
+
+		if(str[i] == ' '){
+
+			str.erase(i,1);
+
+			str.insert(i,"@40");
+		
+		}
+
+ 
+	}
+	  return str;
+}
