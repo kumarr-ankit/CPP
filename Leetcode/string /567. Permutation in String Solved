@@ -1,3 +1,5 @@
+
+// O(N)
 class Solution {
 public:
     bool  isEqual(int arr1[] , int arr2[] ){
@@ -63,5 +65,80 @@ public:
 
         return false;
         
+    }
+};
+
+//Optimised ✨ but O(N)
+
+class Solution {
+public:
+    bool isEqual(int a[], int b[]) {
+        for (int i = 0; i < 26; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool checkInclusion(string s1, string s2) {
+
+        int arr1[26] = {0}, arr2[26] = {0};
+        int count;
+
+        // store char count array of string s1
+
+        for (int i = 0; i < s1.size(); i++) {
+
+            count = s1[i] - 'a';
+            arr1[count]++;
+        }
+
+        // working on first window of string s2
+        int j = 0;
+        int window = s1.size();
+        // store the char count of first window
+
+        while (j < window && j < s2.size()) {
+            count = s2[j] - 'a';
+            arr2[count]++;
+            j++;
+        }
+
+        // check if both array are equal
+
+        if (isEqual(arr1, arr2) == true)
+            return true;
+
+        // process next windows if not found same above
+
+        // working on rest next windows
+
+        char newChar;
+        char prevChar;
+
+        while (j < s2.size()) {
+
+            newChar = s2[j];
+            count = newChar - 'a';
+            arr2[count]++;
+
+            // remove the count of lost left char
+
+            /*arr2[j - window] = 0; ye galat logic hai hame pata hona chahiye
+             * kis char ke count ko decrease kar rhe hain is case mein hum int
+             * array ke current position i-window par element ko zeo kar rhe
+             * hain jo galat hai.Aur hame zero nhi karna chahiye balki -- karna
+             * chahiye kyuki window ek character se agge shift ho rhi hai*/
+
+             prevChar = s2[j-window];
+             count = prevChar - 'a';
+             arr2[count]--; 
+
+            if (isEqual(arr1, arr2) == true)
+                return true;
+            j++;
+        }
+        return false;
     }
 };
