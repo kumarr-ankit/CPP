@@ -1,5 +1,7 @@
 class Solution {
 public:
+
+//T.C -> n*log(logn))
     int countPrimes(int n) {
         int cnt = 0 ;
         vector<bool> ans(n+1,true); //mark everyone to prime
