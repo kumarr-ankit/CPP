@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int row = matrix.size();
+        int i;
+
+        // find the transpose
+        for (i = 0; i < row; i++) {
+            for (int j = i+1; j < row; j++) {
+
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+
+        // reverse the each row
+        int s, e;
+
+        for (i = 0; i < row; i++) {
+            s = 0;
+            e = row - 1;
+
+            while (s < e) {
+                swap(matrix[i][s], matrix[i][e]);
+                s++;
+                e--;
+            }
+        }
+    }
+};
