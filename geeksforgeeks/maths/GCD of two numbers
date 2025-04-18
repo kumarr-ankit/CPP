@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int gcd(int a, int b) {
+        // code here
+        
+        while(a !=0 ){
+            int t = a;
+            a = b%a;
+            //hame mtlb nhi ki kon bada hai haume dekhna hai ki denomenator me zero na aaye.since a can not be zero so we put in demonantor
+            b = t;
+            
+        }
+        return b;
+    }
+};
