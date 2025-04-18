@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countPrimes(int n) {
+        int cnt = 0 ;
+        vector<bool> ans(n+1,true); //mark everyone to prime
+        ans[0] = ans[1] = false; //0 -> non prime , 1 -> non prime
+        int j;
+
+        for(int i = 2 ; i < n; i++){
+            if(ans[i]==true){
+                cnt++;
+                //mark non prime every one comining in table of i
+                for(j = i*2 ; j < n ; j= j+i ){
+                    ans[j] = false;
+                }
+            }
+        }
+        return cnt;
+        
+    }
+};
