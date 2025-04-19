@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+bool isArmstrong(int num) {
+ 
+
+	
+    int t = num;
+	int rev = 0;
+    int l ;
+    int count = (int)log10(num)+1;
+
+	while(num>0){
+        l = num%10;
+		rev = (rev) + pow(l,count);
+		num /= 10;
+	}
+	return rev == t;
+}
