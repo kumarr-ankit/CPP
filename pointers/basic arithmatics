@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int* ptr = arr;
+
+    // ✅ VALID OPERATIONS
+    cout << "Original ptr points to: " << *ptr << endl;
+
+    ptr++; // move to next element
+    cout << "After ptr++: " << *ptr << endl;
+
+    ptr = ptr + 2; // skip 2 elements ahead
+    cout << "After ptr + 2: " << *ptr << endl;
+
+    ptr--; // move back one element
+    cout << "After ptr--: " << *ptr << endl;
+
+    int* ptr2 = arr + 4;
+    int distance = ptr2 - ptr; // distance between pointers
+    cout << "Distance between ptr2 and ptr: " << distance << endl;
+
+    // ❌ INVALID OPERATIONS
+    /*
+    ptr = ptr * 2;    // Error
+    ptr = ptr / 2;    // Error
+    ptr = ptr % 3;    // Error
+    */
+
+    return 0;
+}
+
+
+>> Output 👇
+Original ptr points to: 10
+After ptr++: 20
+After ptr + 2: 40
+After ptr--: 30
+Distance between ptr2 and ptr: 1
