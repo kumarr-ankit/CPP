@@ -1,0 +1,48 @@
+#include <climits>
+int getsLarge(int n, vector<int> arr){
+
+        int L = arr[0];
+        int l = -1;
+
+        for(int i = 0 ; i < n ; i++){
+            if(arr[i] > L){
+                l = L;
+                L = arr[i];
+            }else if(arr[i] < L && arr[i] > l){
+                l = arr[i];
+            }
+        }
+
+        return l;
+
+
+}
+    int getsSmall(int n, vector<int> arr){
+
+        int S = arr[0];
+        int s = INT_MAX;
+
+        for(int i = 0 ; i < n ; i++){
+            if(arr[i] < S){
+                s = S;
+                S = arr[i];
+            }else if(arr[i] > S && arr[i] < s){
+                s = arr[i];
+            }
+        }
+
+        return s;
+
+
+
+
+    }
+vector<int> getSecondOrderElements(int n, vector<int> a) {
+    // Write your code here.
+
+
+        int sSmall = getsSmall(n,a);
+        int sLarge = getsLarge(n,a);
+
+        return {sLarge,sSmall};
+}
