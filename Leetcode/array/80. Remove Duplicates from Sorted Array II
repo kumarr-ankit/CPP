@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+
+        if (nums.size() <= 1)
+            return nums.size();
+        int p = 0;
+        int q = 1;
+        int cnt = 1;
+        int n = 1;
+        while ((q < nums.size())) {
+
+            if ((nums[p] == nums[q]) && (cnt == 1)) {
+
+                nums[p + 1] = nums[q];
+                p++;
+                n++;
+                cnt++;
+
+            } else if ((nums[q] != nums[p]) && ((p + 1) < nums.size())) {
+                nums[p + 1] = nums[q];
+                cnt = 1;
+                p++;
+                n++;
+            }
+
+            q++;
+        }
+
+        return n;
+    }
+};
