@@ -1,0 +1,38 @@
+vector < int > sortedArray(vector < int > a, vector < int > b) {
+    // Write your code here
+    int m = a.size();
+    int n = b.size();
+    vector<int> ans;
+
+    int p = 0, q = 0;
+    
+    while(p < m && q < n){
+
+        if(a[p]==b[q]){
+
+            if(ans.size() == 0 || a[p] != ans.back()) ans.push_back(a[p]);
+            p++;
+            q++;
+            
+        } else if (a[p] < b[q]){
+            if(ans.size() == 0 || a[p] != ans.back()) ans.push_back(a[p]);           
+            p++;
+        } else if (b[q] < a[p]){
+            if(ans.size() == 0 || b[q] != ans.back())  ans.push_back(b[q]);
+            q++;
+        }
+    }
+
+    while(p < m){
+       if(ans.size() == 0 || a[p] != ans.back()) ans.push_back(a[p]);
+        p++;
+    }
+
+    while(q<n){
+        if(ans.size() == 0 || b[q] != ans.back())  ans.push_back(b[q]);
+        q++;
+    }
+
+
+    return ans;
+}
