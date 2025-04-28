@@ -1,0 +1,25 @@
+void pushZerosAtEnd(vector<int> &arr) 
+{
+	// Write your code here.
+	int z = 0;
+
+	vector<int> temp;
+
+	for(int e : arr){
+		if(e==0) z++;
+		if(e != 0) temp.push_back(e);
+	}
+	//put all the element of temp that are non zero already
+
+	int n = temp.size();
+
+	for(int i = 0 ; i < n ; i++){
+		arr[i] = temp[i];
+	}
+
+	//put all the zeros to the end of arr
+
+	for(int i = n ; i < arr.size() ; i++ ){
+		arr[i] = 0;
+	}
+}
