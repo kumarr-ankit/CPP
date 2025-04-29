@@ -1,0 +1,51 @@
+1.HASHING METHOD : BETTER
+int missingNumber(vector<int>&a, int N) {
+    // Write your code here.
+    vector<int> hash(N+1,0);
+    sort(a.begin(),a.end());
+
+    for(int i = 0 ; i < N ; i++){
+        if((i+1)==a[i]) hash[i] = 1;
+    }
+
+    for(int i =0 ; i < N-1; i++){
+        if(hash[i]==0)return (a[i]-1);
+    }
+
+    return N;
+}
+
+2. SUM : OPTIMAL
+
+int missingNumber(vector<int>&a, int N) {
+    // Write your code here.
+
+    int total = N*(N+1)/2;
+    int curr = 0;
+
+    for(int e : a) curr += e;
+
+    return total-curr;
+
+}
+
+3.XOR : MOST OPTIMAL
+
+int missingNumber(vector<int>&a, int N) {
+    // Write your code here.
+
+    int xoR = 0;
+
+    for(int e : a){
+        xoR = xoR^e;
+    }
+
+    while(N>0){
+
+        xoR = xoR^N;
+        N--;
+    }
+
+    return xoR;
+}
+
