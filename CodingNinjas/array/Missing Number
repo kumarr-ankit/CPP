@@ -49,3 +49,19 @@ int missingNumber(vector<int>&a, int N) {
     return xoR;
 }
 
+3.b XOR : MOST MOST OPTIMAL
+
+int missingNumber(vector<int>&a, int N) {
+    // Write your code here.
+
+    int xoR = 0;
+
+    for(int i = 0 ; i < (N-1) ; i++){
+        xoR = xoR ^ a[i];
+        xoR = xoR ^ (i+1);
+
+    }
+    xoR = xoR^N;
+
+    return xoR;
+}
