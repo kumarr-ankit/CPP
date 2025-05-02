@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+char findAddedCharacter(string &s, string &t) {
+    // Write your code here.
+
+    int x = 0;
+    int e ;
+
+    for(char m : s){
+
+        e = m - 'A';
+
+        x = x ^ e ;
+
+    }
+
+    for(char m : t){
+
+        e = m - 'A';
+
+        x = x ^ e;
+    }
+
+    return (char)(x+'A');
+
+
+}
