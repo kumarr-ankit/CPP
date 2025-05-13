@@ -1,0 +1,33 @@
+    void fun(int op , int cl , string temp , vector<string>& ans){
+        
+        if(op==0&&cl==0){
+            
+           
+                ans.push_back(temp);
+           
+            return;
+        }
+        
+        if(op != 0){
+            
+            temp.push_back('(');
+            fun(op-1,cl,temp,ans);
+            temp.pop_back();
+            
+        }
+        if(cl>op){
+            temp.push_back(')');
+            fun(op,cl-1,temp,ans);
+            temp.pop_back();
+        }
+        
+    }
+    vector<string> generateParentheses(int n) {
+        // code here
+        
+         vector<string> ans;
+         fun(n/2,n/2,"",ans);
+         
+         return ans;
+    }
+};
