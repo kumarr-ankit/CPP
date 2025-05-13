@@ -1,0 +1,34 @@
+#include <bits/stdc++.h> 
+void fun(int idx ,string str , vector<string>& ans, string& temp){
+	if(idx>= str.size()){
+		
+		if(!temp.empty())
+		ans.push_back(temp);
+		return;
+	}
+
+	//take
+	temp.push_back(str[idx]);
+	fun(idx+1,str,ans,temp);
+
+	//not take
+
+	temp.pop_back();
+	fun(idx+1,str,ans,temp);
+
+
+}
+vector<string> subsequences(string str){
+	
+	// Write your code here
+
+	vector<string> ans;
+	string temp ="";
+   
+    fun(0,str,ans,temp);
+
+	return ans;
+
+
+	
+}
