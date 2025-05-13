@@ -1,0 +1,59 @@
+#include <bits/stdc++.h> 
+
+char changeCase(char c){
+
+	char ans;
+
+	if(c>= 'a' && c <= 'z'){
+    ans = c - 'a' + 'A';
+	
+	}else if(c>= 'A' && c<= 'Z'){
+
+		 ans = c - 'A' + 'a';
+
+	}
+
+
+return ans;
+}
+void fun(int idx , string s, string temp, vector<string>& ans){
+	if(idx >= s.size()){
+		if(!temp.empty()){
+			ans.push_back(temp);
+		}
+		return;
+	}
+
+	if(s[idx]>= '0' && s[idx] <= '9'){
+		//pick 
+		temp = temp + s[idx];
+		fun(idx+1,s,temp,ans);
+		temp.pop_back();
+		
+	}else{
+
+		//pick current case
+		temp += s[idx];
+		fun(idx+1,s,temp,ans);
+		temp.pop_back();
+
+		
+
+		//pick other case
+		char c = changeCase(s[idx]);
+		temp += c;
+		fun(idx+1,s,temp,ans);
+		temp.pop_back();
+		
+		
+	}
+}
+vector<string> letCasePermutation(string s) 
+{
+	// Write your code here.
+	vector<string> ans;
+	string temp;
+	fun(0,s,temp,ans);
+
+	return ans;
+}
