@@ -1,0 +1,36 @@
+#include <bits/stdc++.h> 
+char rotate(char ch){
+    char ans;
+    switch(ch){
+      case '0' : ans = '0';
+      break;
+      case '1' : ans = '1';
+      break;
+      case '6' : ans = '9';
+      break;
+      case '8' : ans = '8';
+      break;
+      case '9' : ans = '6';
+      break;
+      default : ans = '?';
+    }
+
+    return ans;
+}
+bool isStrobogrammatic(string &n)
+{
+    // Write your code here.
+
+   int i = 0, j = n.size()-1;
+
+   while(i<=j){
+       char c = rotate(n[i]);
+       if(c=='?') return false;
+       if(c != n[j]) return false;
+       
+       i++;
+       j--;
+   }
+
+    return true;
+}
