@@ -1,0 +1,27 @@
+  
+    void fun(int n, int on,int ze,string temp,vector<string>& ans){
+        if(n<=0){
+            if(!temp.empty()){
+                ans.push_back(temp);
+            }
+            return;
+        }
+        
+        //always pick 1
+        temp.push_back('1');
+        fun(n-1,on+1,ze,temp,ans);
+        temp.pop_back();
+        
+        if(on>ze){
+        temp.push_back('0');
+        fun(n-1,on,ze+1,temp,ans);
+        temp.pop_back();
+        }
+    }
+    vector<string> NBitBinary(int n) {
+        // Your code goes here
+        vector<string> ans;
+        fun(n,0,0,"",ans);
+        
+        return ans;
+    }
