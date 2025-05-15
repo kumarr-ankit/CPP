@@ -1,0 +1,14 @@
+    long long similarSubstrings(string s) {
+    vector<long long> freq(26, 0);
+    for (char ch : s) {
+        freq[ch - 'a']++;
+    }
+
+    long long ans = 0;
+    for (int i = 0; i < 26; ++i) {
+        long long c = freq[i];
+        ans += (c * (c + 1)) / 2;
+    }
+
+    return ans;
+}
