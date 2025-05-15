@@ -9,6 +9,6 @@
         long long c = freq[i];
         ans += (c * (c + 1)) / 2;
     }
-
+ 
     return ans;
 }
