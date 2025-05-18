@@ -1,0 +1,36 @@
+#include <bits/stdc++.h> 
+
+void fun(int idx,string& temp, string m,int k){
+	if(idx==m.size() || k==0){
+		return;
+	}
+      
+	char maxi = m[idx];
+
+	for(int i = idx+1; i < m.size() ; i++){
+		maxi = max(maxi,m[i]);
+	}
+
+	for(int i = idx+1; i < m.size() ; i++){
+		if( m[i] == maxi){
+			swap(m[i],m[idx]);
+			if(m.compare(temp) > 0){
+				temp = m;
+			}
+			fun(idx+1,temp,m,k-1);
+			swap(m[i],m[idx]);
+		}
+	}
+
+	if(maxi == m[idx]){
+		fun(idx+1,temp,m,k);
+	}
+
+}
+string findMax(string m,int k){       
+	// Write your code here.
+	string t = m;
+	fun(0,t,m,k);
+	
+	return t;
+}
