@@ -1,0 +1,29 @@
+    long  solve(int N){
+        if(N==1){
+           
+            return 0;
+        }
+        
+        if(N==2){
+           
+            return 1;
+        }
+        
+        long  a = solve(N-2);
+        long b = solve(N-1);
+        
+       
+        return a*a-b;
+        
+    }
+    void gfSeries(int N) {
+        // Write Your Code here
+        
+       for(int i = 1; i <= N ; i++) {
+          cout << solve(i) << " ";
+           
+       }
+        
+        cout << endl;
+        
+    }
