@@ -1,0 +1,53 @@
+#include <bits/stdc++.h> 
+
+void fun(int x, int y, string &temp,set<string> &paths,vector<vector<int>> &arr, int n){
+
+
+    //Check boundries && invalid or visited
+    if(x>=n || x < 0 || y >= n || y < 0 || arr[x][y] == 0){
+        return;
+    }
+
+
+    if(x==n-1 && y==n-1){
+      if(arr[x][y]== 1) paths.insert(temp);
+      return;
+    }
+    //Go in directions
+    //mark visited
+    int t = arr[x][y];
+    arr[x][y] = 0;
+
+    temp.push_back('L');
+    fun(x,y-1,temp,paths,arr,n); //Left
+    temp.pop_back();
+
+     temp.push_back('R');
+    fun(x,y+1,temp,paths,arr,n); //Right
+     temp.pop_back();
+
+     temp.push_back('U');
+    fun(x-1,y,temp,paths,arr,n); //Top
+     temp.pop_back();
+
+     temp.push_back('D');
+    fun(x+1,y,temp,paths,arr,n); //Down
+     temp.pop_back();
+
+    //backtrack
+     arr[x][y] = t;
+
+
+}
+vector < string > searchMaze(vector < vector < int >> & arr, int n) {
+    // Write your code here.
+   
+    set<string> paths;
+    string temp = "";
+    int x  = 0, y = 0;
+
+    fun(x,y,temp,paths,arr,n);
+    vector<string> ans(paths.begin(),paths.end());
+
+    return ans;
+}
