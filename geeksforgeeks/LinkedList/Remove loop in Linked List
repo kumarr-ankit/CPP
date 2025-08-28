@@ -1,0 +1,44 @@
+  Node* getInter(Node* head){
+     Node* fast = head;
+     Node* slow = head;
+     
+     while(fast != NULL && fast->next != NULL){
+         
+        fast = fast->next;
+        if(fast != NULL) fast = fast->next;
+        slow = slow->next;
+        if(slow == fast) return slow;
+     }
+     
+     return NULL;
+    }
+    Node* getFirst(Node* head){
+        Node* slow = head;
+        Node* inter = getInter(head);
+        
+        if(!head || !inter) return NULL;
+        
+        while(slow != inter){
+            slow = slow->next;
+            inter = inter->next;
+        }
+        
+        return slow;
+    }
+    Node* getPrev(Node* head){
+        
+        Node* first = getFirst(head);
+        Node* temp = first;
+        
+        if(!first) return NULL;
+        while(temp && temp->next != first){
+            temp = temp->next;
+        }
+       return temp; 
+    }
+    void removeLoop(Node* head) {
+        // code here
+        Node* prev = getPrev(head);
+        
+        if(prev != NULL) prev->next = NULL;
+    }
