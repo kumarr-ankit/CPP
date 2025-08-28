@@ -15,3 +15,28 @@
         return false;
         
     }
+
+
+/// ### FLOYD CYCLE DETECTION ALGO.
+    bool detectLoop(Node* head) {
+        // code here
+        if(head == NULL) return false;
+        
+ 
+        
+         Node*   fast = head;
+         Node*   slow = head;
+        
+        while(fast != NULL && slow != NULL){
+            fast = fast->next;
+            if(fast == NULL) return false;
+            fast = fast->next;
+            slow = slow->next;
+            
+            if(fast==slow) return true;
+            
+        }
+        
+        return false;
+        
+    }
