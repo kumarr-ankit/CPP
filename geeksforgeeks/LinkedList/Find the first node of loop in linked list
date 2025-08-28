@@ -1,0 +1,32 @@
+    Node* helper(Node* head){
+        Node* fast = head;
+        Node* slow = head;
+        
+        while(fast != NULL && slow != NULL){
+            fast = fast->next;
+            if(fast != NULL) fast = fast->next;
+            slow = slow->next;
+            if(fast==slow) return fast;
+            
+        }
+        
+        return NULL;
+    }
+    
+    int findFirstNode(Node* head) {
+        // code here
+        Node* slow = head;
+        Node* inter = helper(head);
+        
+        if(slow == NULL || inter == NULL) return -1;
+        
+        while(slow != inter){
+            slow = slow->next;
+            inter = inter->next;
+            
+        }
+        
+        if(slow == inter) return slow->data;
+        return -1;
+        
+    }
