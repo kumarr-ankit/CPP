@@ -1,0 +1,39 @@
+    Node* segregate(Node* head) {
+        // code here
+        int n0 = 0;
+        int n1 = 0;
+        int n2 = 0;
+        Node* temp = head;
+        while(temp) {
+            if(temp->data == 0) {
+             n0++;   
+            }else if(temp->data == 1){
+              n1++;  
+            }else if(temp->data == 2){
+              n2++;  
+            }
+            
+            temp = temp->next;
+        }
+        temp = head;
+        
+        while(temp && n0>0){
+            temp->data = 0;
+            n0--;
+            temp = temp->next;
+        }
+        
+        while(temp && n1>0){
+            temp->data = 1;
+            n1--;
+            temp = temp->next;
+        }
+        
+        while(temp && n2>0){
+            temp->data = 2;
+            n2--;
+            temp = temp->next;
+        }
+        
+        return head;
+    }
