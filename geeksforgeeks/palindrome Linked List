@@ -1,0 +1,57 @@
+    Node* reverseLL(Node* head){
+        Node* prev = NULL;
+        Node* curr = head;
+        Node* next = head->next;
+        
+        while(curr){
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            
+        }
+        
+        return prev;
+    }
+    Node* findMid(Node* head){
+        Node* slow = head;
+        Node* fast = head;
+        
+        while(slow != NULL && fast != NULL && fast->next != NULL){
+            
+            fast = fast->next;
+            if(fast != NULL) fast = fast->next;
+            
+            slow = slow->next;
+        }
+        
+        return slow;
+    }
+    bool isPalindrome(Node *head) {
+        //  code here
+        //1 Mid Finding
+        if(!head || !head->next) return true;
+        Node* mid = findMid(head);
+        //reverse last half
+        Node* head2 = reverseLL(mid);
+        
+        //matching first half and second half
+        
+        
+        Node* head1 = head;
+        
+        while(head2){
+            if(head1->data != head2->data) return false;
+            
+            head1 = head1->next;
+            head2 = head2->next;
+        }
+        
+        //re-revrese the second half of LL
+        
+        reverseLL(mid);
+        
+        return true;
+        
+        
+    }
