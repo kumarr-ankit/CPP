@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+vector<int> convertToArray(Node* head){
+        
+        vector<int> v;
+        
+        Node* temp = head;
+        while(temp){
+            Node* temp1 = temp; //?
+            while(temp1){
+                
+                v.push_back(temp1->data);
+                temp1 = temp1->child ;
+            }
+            
+            temp = temp->next;
+        }
+        
+        return v;
+    }
+    Node* toList( vector<int> v){
+        int n = v.size();
+        if(n == 0) return NULL;
+        
+      
+       
+       Node* dummy = new Node(-1);
+       Node* temp = dummy;
+       
+       for(int i = 0 ; i < n ; i++){
+           
+           temp-> child = new Node(v[i]);
+           temp = temp -> child;
+       }
+       
+       return dummy->child;
+       
+    }
+    
+    Node *flatten(Node *root) {
+        // code here
+        if(!root) return root;
+        
+        vector<int> v  = convertToArray(root);
+        sort(v.begin(),v.end());
+        return toList(v);
+        
+    }
+
+Node* flattenLinkedList(Node* head) 
+{
+	// Write your code here
+	return flatten(head);
+}
