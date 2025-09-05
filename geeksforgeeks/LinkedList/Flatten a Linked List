@@ -1,0 +1,48 @@
+    Node* merge(Node* head1 , Node* head2){
+        
+        Node* dummy = new Node(-1);
+        
+        Node* temp1 = head1;
+        Node* temp2 = head2;
+        Node* temp3 = dummy;
+        
+        while(temp1 && temp2){
+            
+            if(temp1->data < temp2->data){
+                temp3->bottom = temp1;
+                temp1 = temp1->bottom;
+                
+            }else{
+                temp3->bottom = temp2;
+                temp2 = temp2->bottom;
+            }
+            temp3 = temp3->bottom;
+        }
+        
+        if(temp1){
+            
+           temp3->bottom = temp1; 
+        }else if(temp2){
+           temp3->bottom = temp2;
+        }
+        
+        return dummy->bottom;
+    }
+  
+    Node* solve(Node* head){
+        
+        if(head == NULL) return NULL;
+        
+        Node* headRest = solve(head->next);
+        
+        
+        return merge(head, headRest);
+        
+    }
+    Node *flatten(Node *root) {
+        // code here
+      if(root == NULL) return NULL;
+      Node* ans = solve(root);
+      
+      return ans;
+    }
