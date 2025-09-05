@@ -1,0 +1,51 @@
+    Node* cloneLinkedList(Node* head) {
+        // code here
+        if(head==NULL) return NULL;
+        //insert same Node;
+        
+        Node* temp = head;
+        
+        
+        while(temp != NULL){
+            Node* newNode = new Node(temp->data);
+            newNode->next = temp->next;
+            temp->next = newNode;
+           
+            temp = newNode->next;
+        }
+        
+        //fill randoms
+        
+        temp = head;
+        
+        while(temp && temp->next){
+            
+            if(!temp->random){
+                
+                temp->next->random = NULL;
+            }else{
+               temp->next->random = temp->random->next;  
+            }
+            temp = temp->next;
+            if(temp) temp = temp->next;
+        }
+        
+        //seprate the Linked List
+        
+        temp = head;
+        Node*  temp2 = head->next;
+        
+        Node* newHead = temp2;
+        
+        while(temp && temp2){
+            
+            temp->next  = temp->next == NULL ? NULL : temp->next->next;
+            temp2->next = temp2->next == NULL ? NULL : temp2->next->next;
+            temp = temp->next;
+            temp2 = temp2->next;
+            
+            
+            
+        }
+        return newHead;
+    }
