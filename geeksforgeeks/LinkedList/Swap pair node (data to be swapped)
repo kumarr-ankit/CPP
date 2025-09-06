@@ -1,0 +1,18 @@
+    Node *pairwiseSwap(Node *head) {
+        // code here
+        if(!head || !head->next) return head;
+        
+        Node* first = head;
+        Node* sec = head->next;
+        
+        int d1 = first->data;
+        int d2 = sec->data;
+            
+        first->data = d2;
+        sec->data = d1;
+            
+        return pairwiseSwap(sec->next);
+            
+            
+       
+    }
