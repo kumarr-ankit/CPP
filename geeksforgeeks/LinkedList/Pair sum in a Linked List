@@ -1,0 +1,41 @@
+    void  solve(Node* start,Node* last,set<pair<int, int>>  &s,int k){
+        
+        int sum = start->data + last->data ;
+        
+        if(start->data >= last->data) return;
+        
+        if(sum < k){
+            start = start->next;
+            solve(start,last,s,k);
+        }else if(sum > k){
+            last = last->prev;
+            solve(start, last , s ,k);
+        }else{
+            
+             pair<int,int> p;
+             p.first = start->data;
+             p.second = last->data;
+             s.insert(p);
+             solve(start->next, last->prev, s ,k);
+            
+        }
+        return;
+    }
+       vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target) {
+        // code here
+        set<pair<int, int>> s;
+        vector<pair<int, int>> v;
+        
+        if(!head || !head->next) return v;
+        
+        Node* start = head;
+        Node* last = head;
+        
+        while(last->next) last = last->next;
+        
+        solve(start,last,s,target);
+        v.assign(s.begin(),s.end());
+        
+        return v;
+        
+    }
