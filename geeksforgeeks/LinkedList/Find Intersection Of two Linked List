@@ -30,3 +30,68 @@
         
         return dummy->next;
     }
+
+
+
+
+
+
+
+
+
+
+
+    ListNode* findInter(ListNode* headA,ListNode* headB, int diff){
+     
+     if(!headA) return NULL;
+     if(!headB) return NULL;
+
+     while(headA != headB) {
+        headA = headA->next;
+        headB = headB->next;
+     }
+
+     if(headA == headB) return headA;
+     return NULL;
+    }
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+
+        int n1 = 0;
+        ListNode* temp  =  headA;
+
+        while(temp){
+            n1++;
+            temp = temp->next;
+        }
+
+        int n2 = 0;
+        temp = headB;
+
+         while(temp){
+            n2++;
+            temp = temp->next;
+        }
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+
+        if(n1>n2){
+          
+          int diff = n1-n2;
+          while(diff){  
+          temp1 = temp1->next;
+          diff--;
+          }
+          return findInter(temp1,temp2,diff);
+
+        }else{
+            int diff = n2-n1;
+          while(diff){
+          temp2 = temp2->next;
+          diff--;
+          }
+          return findInter(temp1,temp2,diff); 
+        }
+
+        return NULL;
+        
+    }
