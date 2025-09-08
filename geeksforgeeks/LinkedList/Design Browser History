@@ -1,0 +1,58 @@
+class Node{
+    public:
+    string url;
+    Node* next ;
+    Node* back ;
+    
+    Node(string u){
+       
+        url = u;
+        next = NULL;
+        back = NULL;
+    }
+  
+    Node(){
+       
+        // url = NULL;
+        next = NULL;
+        back = NULL;
+    }
+};
+class BrowserHistory {
+  public:
+    // constructor to initialize object with homepage
+    Node* curr;
+    BrowserHistory(string homepage) {
+        curr = new Node(homepage);
+    }
+
+    // visit current url
+    void visit(string url) {
+        Node* newNode = new Node(url);
+        curr->next = newNode;
+        newNode->back = curr;
+        curr = newNode;
+    }
+
+    // 'steps' move backward in history and return current page
+    string back(int steps) {
+        
+        while(steps > 0){
+            if(curr->back==NULL) break;
+            curr = curr->back;
+            steps--;
+        }
+        
+        return curr->url;
+    }
+
+    // 'steps' move forward and return current page
+    string forward(int steps) {
+        while(steps > 0){
+            
+            if(curr->next==NULL) break;
+            curr = curr->next;
+            steps--;
+        }
+        return curr->url;
+    }
