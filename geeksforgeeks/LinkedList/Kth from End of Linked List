@@ -1,0 +1,33 @@
+    int getKthFromLast(Node* head, int k) {
+        // code here
+       
+        
+        if(!head) return -1;
+        
+        int size = 0;
+        
+        
+        
+        Node* temp = head;
+        
+        while(temp){
+            temp = temp->next;
+            size++;
+        }
+        
+        int index = size - k + 1;
+        int i = 1;
+        
+        temp = head;
+        
+        while(temp){
+           
+            if(i==index) return temp->data;
+           
+            temp = temp->next;
+             i++;
+            
+        }
+        
+        return -1;
+    }
