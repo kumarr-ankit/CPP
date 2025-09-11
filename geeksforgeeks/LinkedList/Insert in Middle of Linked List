@@ -1,0 +1,33 @@
+    int Mid(Node *head){
+        
+        int len = 0;
+        Node* t = head;
+        
+        while(t){
+            len++;
+            t = t->next;
+        }
+        
+        return len&1 ? (len+1)/2 : len/2;
+    }
+    Node *insertInMiddle(Node *head, int x) {
+        // Code Here
+        Node* node = new Node(x);
+        if(!head) return node;
+        int mid = Mid(head);
+        
+        Node* t = head;
+        
+        while(t){
+            mid--;
+            if(mid == 0) {
+                
+                node->next = t->next;
+                t->next = node;
+            }
+            
+            t =t->next;
+        }
+        
+        return head;
+    }
