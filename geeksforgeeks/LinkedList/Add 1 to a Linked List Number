@@ -1,0 +1,54 @@
+  
+      Node* reverseList(Node* head) {
+        // code here
+        if(!head || !head->next) return head;
+        
+        Node* curr = head;
+        Node* prev = NULL;
+        
+        while(curr){
+            Node* nextNode = curr->next;
+            
+            curr->next =  prev;
+            
+            prev = curr;
+            
+            curr = nextNode;
+        }
+        
+        return prev;
+    }
+    Node* addOne(Node* head) {
+        // Your Code here
+        
+        // return head of list after adding one
+        
+        Node* head2 = reverseList(head);
+        
+        Node* temp = head2;
+        
+        int carr = 0;
+        int sum = carr + 1;
+        Node* tempPrev = NULL;
+        
+        while(temp){
+            
+            int data = temp->data;
+            
+            sum = sum +  carr + data;
+            
+            temp->data = sum%10;
+            
+            carr = sum/10;
+            
+            tempPrev = temp;
+            temp = temp->next;
+            sum = 0;
+        }
+        
+        if(carr>0) tempPrev->next  = new Node(carr);
+        
+        
+        
+        return reverseList(head2);
+    }
