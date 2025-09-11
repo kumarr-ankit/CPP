@@ -1,0 +1,19 @@
+    bool isLengthEven(struct Node **head) {
+        // Code here
+       
+        if(!head) return true;
+       
+        
+       Node* fast = *head;
+       Node* slow = *head;
+       
+       while(fast && fast->next){
+           
+           fast = fast->next;
+           fast = fast->next;
+       }
+       
+       if(!fast) return true;
+       if(!fast->next) return false;
+        
+    }
