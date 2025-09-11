@@ -1,0 +1,11 @@
+    int getCount(Node* head) {
+        // Code here
+        int i = 0 ;
+        
+        Node* t = head;
+        while(t){
+            t = t->next;
+            i++;
+        }
+        return i;
+    }
