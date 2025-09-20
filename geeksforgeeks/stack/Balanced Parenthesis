@@ -1,0 +1,33 @@
+    char getRev(char ch){
+        
+        if(ch == ')') return '(';
+        if(ch == '}') return '{';
+        if(ch == ']') return '[';
+        
+        return '0';
+    }
+    bool isBalanced(string& s) {
+        // code here
+        stack<char> stak;
+        if(s.size() == 0) return true;
+        string temp = s;
+        
+        for(char ch : temp){
+            
+            if(ch == '(' || ch == '[' || ch == '{' ){
+                
+                stak.push(ch);
+            }else{
+                
+             if(stak.empty()) return false;
+             
+             char chRev = getRev(ch);
+             
+             if(chRev != stak.top()) return false;
+             
+             stak.pop();
+            }
+        }
+        
+        return stak.empty();
+    }
