@@ -1,0 +1,50 @@
+    void reverseArray(vector<int> &arr) {
+        // code here
+        stack<int> stk;
+        
+        for(int x : arr){
+            
+            stk.push(x);
+            
+        }
+        
+        arr.erase(arr.begin(),arr.end());
+        
+        
+        while(!stk.empty()){
+            
+            int t = stk.top();
+            
+            arr.push_back(t);
+            stk.pop();
+        }
+        
+        
+    }
+
+
+
+
+
+    void reverseArray(vector<int> &arr) {
+        // code here
+        stack<int> stk;
+        
+        for(int x : arr){
+            
+            stk.push(x);
+            
+        }
+        
+        int i = 0;
+        
+        while(!stk.empty()){
+            
+            int t = stk.top();
+            
+            arr[i++] = t;
+            stk.pop();
+        }
+        
+        
+    }
