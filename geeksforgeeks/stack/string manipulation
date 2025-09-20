@@ -1,0 +1,25 @@
+    int removeConsecutiveSame(vector<string>& arr) {
+        // Your code goes here
+        
+        if(arr.size() <= 1) return 1;
+        stack<string> stk;
+        for(string str : arr){
+            
+            if(stk.empty()){
+                
+                stk.push(str);
+            }else{
+                
+                if(stk.top() != str){
+                    
+                    stk.push(str);
+                }else{
+                    stk.pop();
+                }
+            }
+        }
+        
+        
+        
+        return stk.size();
+    }
