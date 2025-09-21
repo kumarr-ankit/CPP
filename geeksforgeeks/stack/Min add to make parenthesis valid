@@ -1,0 +1,17 @@
+    int minParentheses(string& s) {
+        // code here
+        stack<char> stk;
+        
+        
+        for(char ch : s){
+            
+         if(!stk.empty() && ch == ')'  && stk.top() == '('){
+             stk.pop();
+         }else{
+             stk.push(ch);
+         }
+         
+        }
+        
+        return stk.size();
+    }
