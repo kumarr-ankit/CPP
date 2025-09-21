@@ -1,0 +1,29 @@
+    string helper(string str) {
+
+        stack<char> stk;
+
+        for (char ch : str) {
+
+            if (!stk.empty() && ch == '#') {
+                stk.pop();
+            } else {
+
+              if(ch != '#')  stk.push(ch);
+            }
+        }
+
+        str.resize(stk.size());
+
+        int i = str.size() - 1;
+
+        while (!stk.empty() && i >= 0) {
+
+            str[i--] = stk.top();
+            stk.pop();
+        }
+
+        return str;
+    }
+    bool backspaceCompare(string s, string t) {
+      return helper(s) == helper(t);
+    }
