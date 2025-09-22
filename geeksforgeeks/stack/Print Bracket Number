@@ -1,0 +1,30 @@
+    vector<int> bracketNumbers(string str) {
+        // Your code goes here
+         vector<int> v;
+         stack<int> stk;
+         int cnt = 0;
+         int ans = 0;
+         
+         for(char ch : str){
+             
+             if(ch == '('){
+                 
+                 cnt++;
+                 ans = cnt;
+                 
+                 stk.push(ans);
+                 v.push_back(ans);
+                 
+             }else if(ch == ')' && cnt > 0){
+                 
+                 v.push_back(ans);
+                 
+                 if(!stk.empty()){
+                      stk.pop();
+                     if(!stk.empty())  ans = stk.top();
+                 }
+             }
+         }
+         
+         return v;
+    }
