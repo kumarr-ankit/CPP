@@ -1,0 +1,36 @@
+    vector<int> leftSmaller(vector<int> arr) {
+        // code here
+         vector<int> v;
+         stack<int> stk;
+         
+         for(int e : arr){
+             
+             if(stk.empty()){
+                 
+                 v.push_back(-1);
+                
+             }else{
+                 
+                 if(e > stk.top()){
+                     
+                     v.push_back(stk.top());
+                   
+                 }else{
+                     
+                     while(!stk.empty() && e <= stk.top()){
+                         
+                         stk.pop();
+                     }
+                     
+                     if(stk.empty()) v.push_back(-1);
+                     else v.push_back(stk.top());
+                 }
+             }
+             
+             stk.push(e);
+             
+         }
+         
+         return v;
+        
+    }
