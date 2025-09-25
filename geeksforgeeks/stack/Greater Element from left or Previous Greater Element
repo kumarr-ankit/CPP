@@ -1,0 +1,28 @@
+    vector<int> preGreaterEle(vector<int>& arr) {
+        //  code here
+        
+         vector<int> v;
+         stack<int> s;
+         
+         for(int e : arr){
+             
+             if(s.empty()){
+                 v.push_back(-1);
+             }else{
+                 
+                 if(s.top() > e){
+                     v.push_back(s.top());
+                 }else{
+                     
+                     while(!s.empty() && s.top() <= e){
+                         s.pop();
+                     }
+                     
+                     if(s.empty()) v.push_back(-1);
+                     else v.push_back(s.top());
+                 }
+             }
+             s.push(e);
+         }
+        return v;
+    }
