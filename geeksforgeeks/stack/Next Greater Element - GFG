@@ -1,0 +1,39 @@
+    vector<int> nextLargerElement(vector<int>& arr) {
+        // code here
+        vector<int> v;
+        stack<int> s;
+        
+        int n  =  arr.size();
+        
+        for(int i = n-1 ; i >= 0 ; i--){
+            
+            int el = arr[i];
+            
+            if(s.empty()){
+                
+                v.push_back(-1);
+            }else{
+                
+              if(s.top() > el){
+                  
+                  v.push_back(s.top());
+              }else{
+                  
+                  while(!s.empty() && s.top() <= el){
+                      
+                      s.pop();
+                  }
+                  
+                  if(s.empty()) v.push_back(-1);
+                  else v.push_back(s.top());
+              } 
+            }
+            
+            
+            s.push(el);
+        }
+        
+        reverse(v.begin(),v.end());
+        
+        return v;
+    }
