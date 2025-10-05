@@ -1,0 +1,55 @@
+  
+    vector<int> getMaxl(vector<int> &arr){
+        
+       vector<int> v; 
+       int n = arr.size();
+       
+       int maxi = arr[0];
+       
+       for(int i = 0; i < n ; i++){
+           
+          maxi = max(arr[i], maxi);
+          v.push_back(maxi);
+          
+       }
+       
+       return v; 
+    }
+    
+    vector<int> getMaxr(vector<int> &arr){
+        
+      vector<int>  v;
+      int n = arr.size();
+      int maxi = arr[n-1];
+      
+      for(int i = n-1; i >= 0 ; i--){
+          
+         maxi = max(arr[i], maxi);
+         v.push_back(maxi); 
+      }
+      
+      reverse(v.begin(),v.end());
+      return v;
+    }
+    int maxWater(vector<int> &arr) {
+        // code here
+        
+        vector<int> maxL = getMaxl(arr);
+        vector<int> maxR = getMaxr(arr);
+        
+        int n = maxL.size();
+        
+        int net = 0;
+        
+        for(int i = 0 ; i < n ; i++){
+            
+            int minMax = min(maxL[i],maxR[i]);
+            
+            int wtr = minMax - arr[i];
+            if(wtr>0) net += wtr;
+            
+        }
+        
+      return net;
+    }
+👉DRY RUN https://photos.google.com/share/AF1QipPQdmEL4xUjU0k5EdZvstbJoxpe9YrbJZXVp5GBJ7yD0g1lxIlpvl0jEcB7lY9RiA/photo/AF1QipNM7umJzlKPFtyKuHi_DEOEeT8uN6bOCBYd_MtJ?key=bXE3RFVtXzEzajhUNlF4am9tenNYZTdweWpjX2xR
