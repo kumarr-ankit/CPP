@@ -1,0 +1,47 @@
+    stack<long long> s;
+    long long mini = -1;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        
+        if(!s.empty()){
+            if(val < mini){
+                long long k = 2*(long long)val-mini;
+                s.push(k); //Imp
+                mini = val; //Imp
+            }else{
+                s.push(val);
+            }
+        }else{
+             s.push(val);
+             mini = val;
+        }
+    }
+    
+    void pop() {
+        if(!s.empty()){
+
+            if(s.top() >= mini){
+                s.pop();
+            }else{
+                mini = 2*mini - s.top();
+                s.pop();
+            }
+        }
+    }
+    
+    int top() {
+
+    if(s.top() >= mini){
+        return s.top();
+    }else{
+        return mini; //s.top() is just flag now , less than mini 
+    }
+    }
+    
+    int getMin() {
+       if(!s.empty()) return mini;
+       return -1; 
+    }
