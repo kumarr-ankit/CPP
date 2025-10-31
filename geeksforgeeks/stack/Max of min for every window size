@@ -23,3 +23,23 @@ vector<int> getMinMax(vector<int> v)
     }
     return arr;
 };
+
+## Brute o(n2)
+  
+  vector<int> solve(vector<int> v){
+
+    int n = v.size();
+    vector<int> arr(n, 0);
+
+    for(int i = 0 ; i < n ; i++){
+
+       int mini = v[i];
+
+       for(int j = i; j < n ; j++){
+
+        mini = min(v[j],mini);
+        arr[j-i] = max(arr[j-i], mini);
+       }
+    }
+    return arr;
+};
