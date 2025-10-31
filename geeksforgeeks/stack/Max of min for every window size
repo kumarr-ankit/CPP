@@ -1,0 +1,25 @@
+## BRUTE o(n3)
+
+vector<int> getMinMax(vector<int> v)
+{
+    int n = v.size();
+    vector<int> arr(n, 0);
+
+    for (int i = 0; i < n; i++)
+    {
+        int window = i + 1;
+        int maxi = arr[i];
+        for (int j = 0; j < n - i; j++)
+        {
+            int mini = INT_MAX;
+            for (int k = j; k < j + window; k++)
+            {
+                mini = min(v[k], mini);
+            }
+            maxi = max(maxi, mini);
+        }
+
+        arr[i] = max(arr[i],maxi);
+    }
+    return arr;
+};
